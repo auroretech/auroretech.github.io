@@ -14,7 +14,6 @@ defaults:
     permalink: "/blog/:title/"
     layout: post
     author: "aurore"
-    comments: true
 # Jekyll
 permalink:          /blog/:title/
 markdown:           kramdown
