@@ -14,6 +14,7 @@ defaults:
     permalink: "/blog/:title/"
     layout: post
     author: "aurore"
+    comments: true
 # Jekyll
 permalink:          /blog/:title/
 markdown:           kramdown
@@ -33,7 +34,7 @@ sass:
 disqus_shortname:   www-auroretech-com-1
 
 # Social
-analytics-id:       "default"
+analytics-id:       "UA-120895017-1"
 twitter:            MeiertaylorMaze
 facebook:           default
 instagram:          _sakura13
