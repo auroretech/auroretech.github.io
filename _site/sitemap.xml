@@ -21,12 +21,22 @@
   
   
     <url>
-      <loc>/about/</loc>
+      <loc>/elements/</loc>
        <lastmod>2017-11-02T00:00:00+08:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
        <priority>0.7</priority>
+      
+     </url>
+  
+    <url>
+      <loc>/</loc>
+       <lastmod>2018-06-18T00:00:00+08:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
       
      </url>
   
@@ -41,22 +51,22 @@
      </url>
   
     <url>
-      <loc>/elements/</loc>
+      <loc>/comment-policy/</loc>
+       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>0.5</priority>
+      
+     </url>
+  
+    <url>
+      <loc>/about/</loc>
        <lastmod>2017-11-02T00:00:00+08:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
        <priority>0.7</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/</loc>
-       <lastmod>2017-11-02T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>1.0</priority>
       
      </url>
   

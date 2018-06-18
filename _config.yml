@@ -13,7 +13,7 @@ defaults:
   values:
     permalink: "/blog/:title/"
     layout: post
-    author: 
+    author: "aurore"
 # Jekyll
 permalink:          /blog/:title/
 markdown:           kramdown
@@ -30,19 +30,19 @@ sass:
   style:            compressed
 
 # Comments
-disqus_shortname:   default
+disqus_shortname:   www-auroretech-com-1
 
 # Social
 analytics-id:       "default"
-twitter:            default
+twitter:            MeiertaylorMaze
 facebook:           default
-instagram:          default
-github:             default
+instagram:          _sakura13
+github:             auroretech
 
 # personal
-location:           CN
+location:           CN 
 phone:              123456
-email:              mrzhangx0504@outlook.cm
+email:              mrzhangx0504@outlook.com
 
 # Gems
 gems:
