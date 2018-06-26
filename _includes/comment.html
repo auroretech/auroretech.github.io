@@ -1,22 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+                
+    <link href="iDisqus.min.css" rel="stylesheet"><script type="text/javascript" src="iDisqus.min.js"></script>
+<script type="text/javascript" src="/assets/js/iDisqus.min.js"></script>  
+<link rel="stylesheet" type="text/css" href="/assets/css/iDisqus.min.css" />
 
-{% if page.comments %}
-<div class="comments-wrapper">
-<div id="comment"></div>
-<script type="text/javascript">
-  $(document).ready(function () {
-    var disq = new iDisqus('comment', {
-        forum: 'lengerfulluse',
-        api: 'http://disqus.auroretech.com',
-        site: 'http://www.auroretech.com',
-        url: location.pathname,
-        mode: 1,
-        timeout: 2000,
-        init: true,
-        badge: "auroretech"
-      });
-    disq.count();
-  });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div><!-- /.comments-wrapper -->
-{% endif %}
+
+</head>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+        <script>
+            var disq = new iDisqus('comment', {
+                forum: 'fooleap',
+                site: 'http://www.auroretech.com',
+                api: 'http://disqus.auroretech.com',
+                mode: 2,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                init: true,
+                emojiPreview: true
+            });
+            disq.popular();
+            disq.count();
+        </script>
+    </body>
+</html>
