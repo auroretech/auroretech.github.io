@@ -1,21 +1,26 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
-    <link href="/assets/css/iDisqus.min.css" rel="stylesheet"><script type="text/javascript" src="assets/js/iDisqus.min.js"></script>
-    <script type="text/javascript" src="assets/js/iDisqus.js"></script>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+        <script src="/assets/js/iDisqus.min.js"></script>
+    
+      
     <body>
         <div id="comment"></div>
         <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
         <ul id="popular-posts"></ul>
-        <script>
+       <script>
             var disq = new iDisqus('comment', {
                 forum: 'auroretech',
-                site: 'http://www.auroretech.com',
-                api: 'http://45.78.40.30',
+                site: 'https://www.auroretech.com',
+                api: 'https://45.78.40.30',
                 mode: 2,
                 timeout: 3000,
                 popular: document.getElementById('popular-posts'),
                 init: true,
-                emojiPreview: true
             });
             disq.popular();
             disq.count();
