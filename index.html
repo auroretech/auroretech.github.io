@@ -66,10 +66,8 @@ sitemap:
 								</header>
 								<a href="#" class="image main"><img src="{{ "/images/pic01.jpg" | absolute_url }}" alt="" /></a>
                                <p></p>  <!--/*write something here!*/ -->
-                                <p></p> 
-		<p></p>
 
-<article>
+</article>
 						<!-- Posts -->
 							<section class="posts">
                 {% for post in site.posts limit:3 %}
@@ -81,10 +79,9 @@ sitemap:
   									</header>
   									<a href="{{ post.url | absolute_url }}" class="image fit"><img src="{{ post.image | absolute_url }}" alt="" /></a>
   									<p>{{ post.excerpt }}</p>
-  									<ul class="actions">
-  										<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
-  									</ul>
-  								</article>
+  									<ul class="actions">									<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
+</ul>
+  	</article>
                   {% if mod3 == 0 %}
                   <article>
   									<header>
