@@ -8,6 +8,7 @@ sitemap:
     changefreq: weekly
 ---
 
+
 <!DOCTYPE HTML>
 <!--
 Auroretech by HTML5 UP
@@ -15,8 +16,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <html>
 	<head>
-    {% include head.html %}
 
+    {% include head.html %}
 
 	</head> 
 	<body class="is-loading">
@@ -71,8 +72,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 </article>
 						<!-- Posts -->
+
 							<section class="posts">
                 {% for post in site.posts limit:3 %}
+
                 {% assign mod3 = forloop.index | modulo: 3 %}
   <article>
   									<header>
@@ -91,11 +94,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
   									</header>
 
   	</article>
+
                   {% endif %}
                 {% endfor %}
 
 							</section>
+
 						<!-- Footer -->
+
 							<footer>
                 <ul class="actions">
                   <li><a href="{{ "/blog/" | absolute_url }}" class="button">Our Blog</a></li>
@@ -109,6 +115,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 		<!-- Scripts -->
 {% include scripts-main.html %}
+
 {% include tracking.html %}
 
 	</body>
