@@ -31,6 +31,7 @@ sass:
 
 # Comments
 disqus_shortname:   www-auroretech-com-1
+sites_comments:     true
 
 # Social
 analytics-id:       "UA-120895017-1"
