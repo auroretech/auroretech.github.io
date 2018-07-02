@@ -3,9 +3,9 @@ layout: post
 title:  "Comment System"
 date:   2018-07-02
 excerpt: "exhausted..."
-image: "/images/love.jpg"
+image: "/images/7-02.jpg"
 comments: true
 ---
 
-Commentsystem was built now.
-
+Comment system was built now.
+> but there are a lot of things to do..
