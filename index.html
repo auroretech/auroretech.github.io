@@ -1,4 +1,4 @@
-﻿---
+---
 layout: null
 title: Aurore • ZJU
 description: Just Do It
@@ -7,19 +7,17 @@ sitemap:
     lastmod: 2018-06-18
     changefreq: weekly
 ---
-
-
 <!DOCTYPE HTML>
 <!--
-Auroretech by HTML5 UP
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) -->
-
+	Auroretech by HTML5 UP
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-
     {% include head.html %}
 
-	</head> 
+
+	</head> -->
 	<body class="is-loading">
 
 		<!-- Wrapper -->
@@ -60,63 +58,62 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<article class="post featured">
 								<header class="major">
 									<h2><a href="#">Stay Hungry  Stay Foolish</a></h2>
-                                                                         <p>Do not,for one repulse,give up the purpose that you resolved to effect. <br />
- William Shakespeare </p>
-								         <p>我们终此一生，就是就是要摆脱他人的期待，找到真正的自己 。 <br />
- 伍绮诗 《无声告白》</p>
+									<p>Do not, for one repulse, give up the purpose that you resolved to effect. <br />
+									  William Shakespeare </p>
+                                    我们终此一生，就是要摆脱他人的期待，找到真正的自己。<br />
+                                    伍绮诗 《无声告白》</p>
 								</header>
 								<a href="#" class="image main"><img src="{{ "/images/pic01.jpg" | absolute_url }}" alt="" /></a>
                                <p></p>  <!--/*write something here!*/ -->
-<p></p>
-<p></p>
+                                <p></p> 
+								<p></p>
 
-</article>
+							</article>
+
 						<!-- Posts -->
-
 							<section class="posts">
                 {% for post in site.posts limit:3 %}
-
                 {% assign mod3 = forloop.index | modulo: 3 %}
-  <article>
+  								<article>
   									<header>
   										<span class="date">{{ post.date | date_to_string }}</span>
   										<h2><a href="{{ post.url | absolute_url }}">{{ post.title }}</h2>
   									</header>
   									<a href="{{ post.url | absolute_url }}" class="image fit"><img src="{{ post.image | absolute_url }}" alt="" /></a>
   									<p>{{ post.excerpt }}</p>
-  									<ul class="actions">									<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
-</ul>
-  	</article>
+  									<ul class="actions">
+  										<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
+  									</ul>
+  								</article>
                   {% if mod3 == 0 %}
-                <article>
+                  <article>
   									<header>
   										<h2><a href="#">Sponsored</h2>
   									</header>
 
-  	</article>
-
+  								</article>
                   {% endif %}
                 {% endfor %}
 
 							</section>
 
 						<!-- Footer -->
-
 							<footer>
                 <ul class="actions">
                   <li><a href="{{ "/blog/" | absolute_url }}" class="button">Our Blog</a></li>
                 </ul>
 							</footer>
+
 					</div>
 
 				<!-- Footer -->
- {% include foot.html %}
-</div>
+        {% include foot.html %}
+
+			</div>
 
 		<!-- Scripts -->
-{% include scripts-main.html %}
-
-{% include tracking.html %}
+		{% include scripts-main.html %}
+    {% include tracking.html %}
 
 	</body>
 </html>
