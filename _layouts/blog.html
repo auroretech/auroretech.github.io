@@ -57,7 +57,7 @@
           </article>
 					<!-- Posts -->
 							<section class="posts">
-                {% for post in site.posts limit:3 %}
+                {% for post in site.posts %}
                 {% assign mod3 = forloop.index | modulo: 3 %}
   								<article>
   									<header>
