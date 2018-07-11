@@ -70,17 +70,17 @@
 									<li><a href="{{ post.url | absolute_url }}" class="button">Full Story</a></li>
 								</ul>
 							</article>
-							{% if mod3 == 0 %}
-							<article>
-								<header>
-									<h2><a href="#">Sponsored</h2>
-								</header>
+            {% if mod3 == 0 %}
+            <article>
+  								<header>
+  									<h2><a href="#">Sponsored</h2>
+  								</header>
 
-							</article>
-							{% endif %}
-						{% endfor %}
+  							</article>
+            {% endif %}
+          {% endfor %}
 
-					</section>
+						</section>
 
 					</div>
 
@@ -89,8 +89,8 @@
 
 			</div>
 
-			<!-- Scripts -->
-			{% include scripts-main.html %}
+      <!-- Scripts -->
+  		{% include scripts-main.html %}
 			{% include tracking.html %}
 
 	</body>
