@@ -14,7 +14,16 @@ defaults:
     permalink: "/blog/:title/"
     layout: post
     author: "aurore"
+
+collections:
+  csblog:
+    output: true
+    permalink: "/computer-science/:title/"
+    layout: post_for_cs
+    author: "aurore"
+
 # Jekyll
+permalink:          /computer-science/:title/
 permalink:          /blog/:title/
 markdown:           kramdown
 highlighter:        rouge

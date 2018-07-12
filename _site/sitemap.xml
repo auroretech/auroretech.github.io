@@ -77,6 +77,16 @@
      </url>
   
     <url>
+      <loc>/computer-science/</loc>
+       <lastmod>2018-07-12T00:00:00+08:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
       <loc>/blog/</loc>
        <lastmod>2017-11-02T00:00:00+08:00</lastmod>
       
