@@ -18,7 +18,7 @@ comments: true
 - 当处理$01$串时，其时间复杂度最坏情况可达$O(n \times m)$是一个糟糕的选择
 
 #### KMP简介
-> ![](http://latex.codecogs.com/gif.latex? \\mathcal{D.E.Knuth \\space\\space\\space J.H.Morris \\space\\space\\space V.R.Pratt}
+> ![](http://latex.codecogs.com/gif.latex?\\mathcal{D.E.Knuth\\space\\space\\spaceJ.H.Morris\\space\\space\\spaceV.R.Pratt}
 
 - 时间复杂度$O(n+m)$
 - 其算法的思想改进在于：每当第一趟匹配过程出现字符不等时，**不需回溯指针**，而是利用已经得到的“部分匹配”将模式向右“滑动”尽可能远的一段拘留了后，继续进行比较
