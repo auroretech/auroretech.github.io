@@ -8,7 +8,7 @@ comments: true
 ---
 
 ## 模式串匹配算法思想
-> [Source Here](http://www.auroretech.com/computer-science/KMP-Algorithm/)
+> [Source Here](http://www.auroretech.com/computer-science/KMP Algorithm/)
 #### 简单的模式串匹配算法
 > 利用计数指针$i$和$j$分别指示模式串和主串的字符位置
 藉由循环判断$string1[ i ] == string2[ j ]$,则继续比较之后的字符，否则主串从
