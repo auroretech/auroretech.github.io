@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post_for_cs
 title:  "模式串匹配算法简介"
 date:   2018-09-13
