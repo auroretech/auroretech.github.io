@@ -10,10 +10,13 @@
                 forum: 'auroretech',
                 site: 'https://www.auroretech.com',
                 api: 'http://45.78.40.30',
-                mode: 2,
+                mode: 3,
                 timeout: 3000,
                 popular: document.getElementById('popular-posts'),
-                init: true,
+                autoCreate: true,
+                relatedType: Popular,
+                emojiPreview: true,
+                init: true
             });
             disq.popular();
             disq.count();
