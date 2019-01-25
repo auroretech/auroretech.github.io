@@ -14,18 +14,18 @@
 <title>档案</title>
 <meta name="description" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
-<link rel="manifest" href="/assets/icon/manifest.json">
-<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="shortcut icon" href="/assets/icon/favicon.ico">
-<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="http://localhost:4000/assets/icon/manifest.json">
+<link rel="mask-icon" href="http://localhost:4000/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="http://localhost:4000/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="http://localhost:4000/assets/icon/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
 
 <!-- CSS -->
-<link rel="stylesheet" href="/assets/css/main.css" />
-<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="http://localhost:4000/assets/css/noscript.css" /></noscript>
 
 <!-- COMMENT -->
 <link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
@@ -41,19 +41,19 @@
 
 				<!-- Header -->
         <header id="header">
-          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+          <a href="http://localhost:4000/" class="logo">WHO YOU WANT TO BE</a>
         </header>
 
 				<!-- Nav -->
 					<nav id="nav">
 
             <ul class="links">
-  <li class=""><a href="/">Home</a></li>
-  <li class=""><a href="/about/">About</a></li>
-  <li class=" active "><a href="/blog/">Blog</a></li>
-  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
-  <li class=""><a href="/computer-science/">Computer Science</a></li>
-  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+  <li class=""><a href="http://localhost:4000/">Home</a></li>
+  <li class=""><a href="http://localhost:4000/about/">About</a></li>
+  <li class=" active "><a href="http://localhost:4000/blog/">Blog</a></li>
+  <!--   <li class=""><a href="http://localhost:4000/elements/">Elements Reference</a></li>    -->
+  <li class=""><a href="http://localhost:4000/computer-science/">Computer Science</a></li>
+  <li class=""><a href="http://localhost:4000/comment-policy/">Comment Policy</a></li>
 
 </ul>
 
@@ -72,28 +72,10 @@
     				<header class="major">
       				<span class="date">07 Jul 2018</span>
       				<h1>档案</h1>
-      				<p><p>﻿—
-layout: post
-title:  “档案”
-date:   2018-07-07
-excerpt: “伴随着毕业季，结束了吗，不，才刚刚开始……”
-image: “/images/7-7-1.jpg”
-comments: true
-—</p>
-
-</p>
+      				<p>伴随着毕业季，结束了吗，不，才刚刚开始......</p>
       			</header>
-      			<div class="image main"><img src="" alt=""></div>
-      			<p><p>﻿—
-layout: post
-title:  “档案”
-date:   2018-07-07
-excerpt: “伴随着毕业季，结束了吗，不，才刚刚开始……”
-image: “/images/7-7-1.jpg”
-comments: true
-—</p>
-
-<p>@(档案)[石家庄人社局，人才市场，高校毕业生]  <br /></p>
+      			<div class="image main"><img src="/images/7-7-1.jpg" alt=""></div>
+      			<p><p>@(档案)[石家庄人社局，人才市场，高校毕业生]  <br /></p>
 
 <p><a href="http://www.sjzrs.gov.cn/">石家庄人力资源和社会保障局</a>负责高校毕业生就业报到，官网中有专门针对<a href="http://www.sjzrs.gov.cn/col/1505457347148/2018/06/14/1528940045573.html">高校毕业生办理报到及档案室地址变更的公告</a>。<br /></p>
 <blockquote>
@@ -104,12 +86,11 @@ comments: true
 
 <p>那时人不是很多，可能放假较晚的我们未赶上“人才济济”的时候，比较幸运。 <br /></p>
 
-<p><img src="https://www.auroretech.com/images/7-7-4.jpg" alt="各县(区)毕业生报道联系方式" /> <br />
-其中的处理方式因情况不同而异，此处不再详细说明，最为直接的方法为查阅有关官网和实地询问，切不可畏惧繁琐。</p>
+<p>其中的处理方式因情况不同而异，此处不再详细说明，最为直接的方法为查阅有关官网和实地询问，切不可畏惧繁琐。</p>
 </p>
       	  </section>
 	  
-          ﻿
+          
       <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
       <script src="/assets/js/iDisqus.min.js"></script>
     <body>
@@ -121,10 +102,11 @@ comments: true
                 forum: 'auroretech',
                 site: 'https://www.auroretech.com',
                 api: 'http://45.78.40.30',
-                mode: 2,
+                mode: 3,
+                init: true,
                 timeout: 3000,
                 popular: document.getElementById('popular-posts'),
-                init: true,
+                autoCreate: true,
             });
             disq.popular();
             disq.count();
@@ -136,7 +118,7 @@ comments: true
 					<!-- Footer -->
 						<footer>
               <ul class="actions">
-                <li><a href="/blog/" class="button">Our Blog</a></li>
+                <li><a href="http://localhost:4000/blog/" class="button">Our Blog</a></li>
               </ul>
 						</footer>
 					</div>
@@ -196,12 +178,13 @@ comments: true
 
       <!-- Scripts -->
   		<!-- DYN -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery.scrollex.min.js"></script>
-<script src="/assets/js/jquery.scrolly.min.js"></script>
-<script src="/assets/js/skel.min.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+<script src="http://localhost:4000/assets/js/util.js"></script>
+<script src="http://localhost:4000/assets/js/main.js"></script>
+
 
 			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
 <script>

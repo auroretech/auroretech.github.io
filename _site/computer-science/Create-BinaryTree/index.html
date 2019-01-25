@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>Create Binary Tree</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="http://localhost:4000/assets/icon/manifest.json">
+<link rel="mask-icon" href="http://localhost:4000/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="http://localhost:4000/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="http://localhost:4000/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="http://localhost:4000/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="http://localhost:4000/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="http://localhost:4000/">Home</a></li>
+  <li class=""><a href="http://localhost:4000/about/">About</a></li>
+  <li class=""><a href="http://localhost:4000/blog/">Blog</a></li>
+  <!--   <li class=""><a href="http://localhost:4000/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="http://localhost:4000/computer-science/">Computer Science</a></li>
+  <li class=""><a href="http://localhost:4000/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">24 Jan 2019</span>
+      				<h1>Create Binary Tree</h1>
+      				<p>how to create a binary tree through inorder, preorder, postorder and layerorder...</p>
+      			</header>
+      			<div class="image main"><img src="/images/8-2.jpg" alt=""></div>
+      			<p><h2 id="bing">Bing</h2>
+
+<p>前几十分钟亲爱的必应还不可访问，就在刚刚，习惯性的在Google页面地址栏敲上”b”自动出来”bing.com”（对其爱的深沉啊），竟然可以访
+问了！！！之前还以为它也被打入了冷宫，真是很伤心了，不说其多好多不好，单单清爽的界面就足以使我一直使用它，且不需要梯子。God bless you。<br />
+言归正传，今天来谈谈那高耸入云、粗壮有力的大树吧。。且先不谈森林之茂密神秘，单就一颗树，就足以让人头疼。<br /></p>
+
+<h2 id="binary-tree">Binary Tree</h2>
+
+<p>二叉树，顾名思义，由根——左子树——右子树递归的组成。根的两个分支构成其孩子，当然，根就是他们的爹了。<br />
+相关概念：</p>
+<ul>
+  <li>结点的度(Degree):结点拥有子树数</li>
+  <li>叶子(Leaf)或终端结点:度为0</li>
+  <li>分支结点或终端结点:度不为0</li>
+  <li>树的度:树内各结点的度的最大值</li>
+  <li>孩子(Child):结点的子树的根</li>
+  <li>双亲(Parent):该结点成为孩子双亲</li>
+  <li>兄弟(Sibling):同一个双亲的孩子之间互称</li>
+  <li>堂兄弟:双亲在同一层的结点</li>
+  <li>深度(Depth):从根结点(深度为1)开始自顶向下逐层累加至该结点时的深度值</li>
+  <li>高度(Height):从最底层叶子节点(高度为1)开始自底向上逐层累加至该结点时的高度之。</li>
+  <li>森林(Forest):是m(m&gt;=0)棵互不相交的树的集合</li>
+</ul>
+
+<p><strong>二叉树</strong>(Binary Tree):每个结点至多有两棵子树，且二叉树的子树有左右之分，其次序不能任意颠倒。</p>
+
+<ul>
+  <li>性质1:在二叉树的第i层上至多有2^(i-1)个结点(i&gt;=1)</li>
+  <li>性质2:深度为k的二叉树至多有2^k - 1个结点。(k&gt;=1)</li>
+  <li>性质3:对任何一棵二叉树T,如果其终端结点数为N0,度为2的结点数为N2,则 N0 = N2 + 1</li>
+</ul>
+
+<p><strong>满二叉树</strong>:一棵深度为K且有2^k - 1个结点的二叉树。特点:每一层上的结点数都是最大结点数。<br />
+<strong>完全二叉树</strong>:除了最下面亦称之外，其余层的结点个数都达到了党曾能达到的最大结点数，且最下面一层之从左至右连续存在若干节点，而这些连续节点右边的结点全部都不存在。<br /></p>
+
+<h2 id="二叉树的遍历">二叉树的遍历</h2>
+
+<p>二叉树在遍历过程中可分为两种方案：<br /></p>
+<ul>
+  <li>深度优先搜索(DFS)</li>
+  <li>广度优先搜索(BFS)</li>
+</ul>
+
+<p>这两种实现方式顾名思义，一个是优先向”深”挖掘，一个是一层一层的挖掘。</p>
+<ul>
+  <li>先序遍历(preorder):   根—&gt;左子树—&gt;右子树</li>
+  <li>中序遍历(inorder):  左子树—&gt;根—&gt;右子树</li>
+  <li>后序遍历(postorder):  左子树—&gt;右子树—&gt;根</li>
+  <li>层序遍历(layerorder):  自根至叶结点，逐层遍历</li>
+</ul>
+
+<p>可以看出，前三种的”先、种和后”的由来由”根”的访问时机而定。且前三种采用DFS实现，层序遍历采用BFS。</p>
+<h2 id="亲手种一棵树">亲手种一棵树</h2>
+
+<p>遍历的前提是种一棵树，那么该怎么种一棵树呢？<br />
+上面各种的遍历为我们提供了足够的信息，如图所示，以先序的遍历序列和中序的遍历序列为例：</p>
+
+<p><img src="http://www.auroretech.com/images/8-1.png" alt="1" /> <br />
+中序的遍历为我们提供了必要的信息! 由图上可知，中序将结点一分为两部分：左子树，右子树且为我们提供了一个关键信息k。由此可得到num = k -inL 即左子树的结点数，由此为下一个递归提供了参数。<br />
+上关键代码：<br />
+<img src="http://www.auroretech.com/images/8-1.jpg" alt="2" /><br />
+其中pre[],in[]为存储着树的先序遍历结点值和中序遍历结点值。为了寻找到关键信息k，我们从先序遍历的特点来看，其第一个结点PreL即是根结点值。故在中序中遍历直至中序数组in[]中和此值相等的数据出现，其数组下标其为k值。<br />
+得到k值后左子树结点个数numLeft便得知。由此，现在的根结点的左子树作为第一层递归的”根结点”，附加新的PreL, PreR, inL, inR。即完成递归所需的全部信息。右子树同理。<br />
+最后，一个由根结点root链接的二叉树便生成了。返回值node* 即我们所要的指向根结点的指针。<br />
+对于其它情况，如中序分别和后序，层序序列均可通过此方法分析。递归实现二叉树的建立。<br /></p>
+
+<h2 id="最后">最后</h2>
+<p>搁置Python爬虫的内容很久了，找机会补上吧。<br />
+附完成代码：</p>
+
+<pre><code class="language-C++">
+#include &lt;iostrem&gt;
+#include &lt;queue&gt;
+
+using namespace std;
+
+int maxn = 50;
+int pre[maxn], in[maxn], post[maxn];
+typedef int data_t;
+
+struct node
+{
+	data_t data;
+	node* lchild;
+	node* rchild;
+};
+
+//二叉树先序遍历
+int pre_order(node* &amp;root)
+{
+	if (root == nullptr)return 0;
+	cout &lt;&lt; root-&gt;data;
+	pre_order(root-&gt;lchild);
+	pre_order(root-&gt;rchild);
+	return 0;
+}
+
+//二叉树中序遍历
+int in_order(node* &amp;root)
+{
+	if (root == nullptr)return 0;
+	in_order(root-&gt;lchild);
+	cout &lt;&lt; root-&gt;data;
+	in_order(root-&gt;rchild);
+	return 0;
+}
+
+int post_order(node* &amp;root)
+{
+	if (root == nullptr)return 0;
+	in_order(root-&gt;lchild);
+	in_order(root-&gt;rchild);
+	cout &lt;&lt; root-&gt;data;
+	return 0;
+}
+
+int layer_order(node* &amp;root)
+{//使用队列实现类似BFS搜索的层序遍历
+	queue&lt;node*&gt; q; //队列存地址
+	q.push(root); //根结点入队
+	while (!q.empty())
+	{
+		node* now = q.front(); //取出队首元素
+		q.pop(); //出队
+		cout &lt;&lt; now-&gt;data;
+		if (now-&gt;lchild != nullptr)q.push(now-&gt;lchild);
+		if (now-&gt;rchild != nullptr)q.push(now-&gt;rchild);
+	}
+	return 0;
+}
+
+node* createbt(int PreL, int PreR, int inL, int inR)
+{
+	if (PreL &gt; PreR)return nullptr;
+	node* root = new node;//创建二叉树根结点
+	root-&gt;data = pre[PreL]; //根结点值域
+	int k;
+	for (k = inL; k &lt;= inR; k++)
+		if (in[k] == pre[PreL])break;//寻找中序中的根，以便区分左子树和右子树
+	int numLeft = k - inL; //左子树的结点个数
+	//返回左子树根结点，递归。
+	root-&gt;lchild = createbt(PreL + 1, PreL + numLeft, inL, k - 1);
+	//返回右子树根结点，递归。
+	root-&gt;rchild = createbt(PreL + numLeft + 1, PreR, k + 1, inR);
+	return root;
+}
+
+int main()
+{
+	int n; //结点个数
+	cout &lt;&lt; "输入结点数:" &lt;&lt; endl;
+	cin &gt;&gt; n;
+	cout &lt;&lt; "输入先序序列:" &lt;&lt; endl;
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; pre[i];
+	cout &lt;&lt; "输入中序序列:" &lt;&lt; endl;
+	for (int i = 0; i &lt; n; i++)
+		cin &gt;&gt; in[i];
+	node* root = createbt(0, n - 1, 0, n - 1);
+	layer_order(root);
+	system("pause");
+	return 0;
+}
+</code></pre>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="http://localhost:4000/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+<script src="http://localhost:4000/assets/js/util.js"></script>
+<script src="http://localhost:4000/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>

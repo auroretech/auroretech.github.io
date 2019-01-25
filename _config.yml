@@ -55,7 +55,7 @@ phone:              012456789
 email:              mrzhangx0504@outlook.com
 
 # Gems
-gems:
+plugins:
   - jekyll-mentions
   - jekyll-sitemap
   - jekyll-feed

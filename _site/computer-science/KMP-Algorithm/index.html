@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<title>良夜</title>
+<title>模式串匹配算法简介</title>
 <meta name="description" content="">
 
 <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/icon/apple-touch-icon.png">
@@ -50,9 +50,9 @@
             <ul class="links">
   <li class=""><a href="http://localhost:4000/">Home</a></li>
   <li class=""><a href="http://localhost:4000/about/">About</a></li>
-  <li class=" active "><a href="http://localhost:4000/blog/">Blog</a></li>
+  <li class=""><a href="http://localhost:4000/blog/">Blog</a></li>
   <!--   <li class=""><a href="http://localhost:4000/elements/">Elements Reference</a></li>    -->
-  <li class=""><a href="http://localhost:4000/computer-science/">Computer Science</a></li>
+  <li class=" active "><a href="http://localhost:4000/computer-science/">Computer Science</a></li>
   <li class=""><a href="http://localhost:4000/comment-policy/">Comment Policy</a></li>
 
 </ul>
@@ -70,31 +70,13 @@
 				<div id="main">
           <section class="post">
     				<header class="major">
-      				<span class="date">08 Jul 2018</span>
-      				<h1>良夜</h1>
-      				<p>Do not go gentle into that good night,Old age should burn and rave at close of the day;Rage, rage against the dying of the light......</p>
+      				<span class="date">13 Sep 2018</span>
+      				<h1>模式串匹配算法简介</h1>
+      				<p>模式串匹配算法的基本思想和简单的介绍...</p>
       			</header>
-      			<div class="image main"><img src="/images/7-8-1.jpg" alt=""></div>
-      			<p><blockquote>
-  <p>逝者已矣，生者如斯 <br /></p>
-</blockquote>
+      			<div class="image main"><img src="/images/2018-9-13-kmp-covergirl.jpg" alt=""></div>
+      			<p><p><img src="http://www.auroretech.com/images/KMP.png" alt="KMP" /></p>
 
-<p>2018年7月6日晚上7点钟，好友杨先生的微信消息打破了炎热夏天的沉寂，着急的购买火车票让我不禁感觉到有什么事情发生。确有其事。杨先生的奶奶似乎身体状态不是很好。我不知好友如何张开的嘴，或许他也不清楚该不该告诉我们，然而当他说了出来时，我还是被这一消息震惊了一下。久久不能平静。 <br />
-好友奶奶的状况让我直接陷入了回忆中。记得那是一个中午，还未来得及打饭，母亲的一个电话打过来，最不想发生的事情还是来了，死神从我的手中夺走了爷爷。电话那头的声音竭力地安慰我，也无法阻挡我瞬间的悸动，强掩着泪水一步一步的回到宿舍，趴在床上。觉得生命突然脆弱的像张纸，漂浮在四方 。<br />
-我早就得知了爷爷身体的每况愈下，任我再歇斯底里，也无法挽回岁月的残忍在不断腐蚀着老人的生命，一点一滴的剥夺他们的自由，剥夺他们的身体。每每我的思绪陷入此，依旧停不下的泪眼朦胧。<br />
-或许每个人都会在这温顺的良夜中思考过生命的意义，存在的价值。<br /></p>
-<blockquote>
-  <p>为什么创造我们的东西，却要毁灭我们呢？<br />——《普罗米修斯》<br /></p>
-</blockquote>
-
-<p>曾经我也自以为是的思考过存在与消逝，死亡或许并不是最恐怖的。每每想到身而为人，消逝后永恒的沉寂，那种巨大的失落感像瀑布一般涌上心头，占据整个感情的神经网络。又好似轻盈的身躯裹着沉重的锁链，跌入万劫不复的深渊所带来的精神禁锢。那一刻，只能是无穷无尽的恐惧。<br />
-面对凋零的身躯，灵魂的永恒沉寂让生者不禁扼腕叹息，此后世间便少了一种风格，又偶然间多了一份感慨。<br />
-我与杨先生是自小就相识的伙伴，得知此消息后，我无法为他做出任何有用的帮助，此时任何的话语都变得微不足道，只好默默不语。只期望好友不要过多的沉浸在失去亲人的悲伤中。<br />
-夜幕降临时，在家中得知了好友的奶奶已经离开了我们，内心隐隐作痛。生命又再次脆弱的像一张纸，漂浮在四方。<br />
-次日，我去看望了好友，待到握住手的那一刻，却又感觉说什么也觉得无力。悄然看到好友的眼圈早已泛红，互相交谈中我竟也无法直视好友，一方面是感概生命的脆弱，另一方面更多的是对好友的感同身受。话语中尽量显得不那么沉重。竟无法过多回忆，不再述说罢。<br /></p>
-<blockquote>
-  <p>不要温顺地走进这个良夜 <br /> 激情不能被消沉的暮色淹没<br /> 咆哮吧，咆哮，痛斥那光的消逝<br />智者在临终的时候对黑暗妥协<br />是因为他们的语言已黯然失色<br />不要温顺地走进这个良夜<br />——《Do Not Go Gentle into That Good Night》Dylan Thomas</p>
-</blockquote>
 </p>
       	  </section>
 	  
@@ -126,7 +108,7 @@
 					<!-- Footer -->
 						<footer>
               <ul class="actions">
-                <li><a href="http://localhost:4000/blog/" class="button">Our Blog</a></li>
+                <li><a href="http://localhost:4000/computer-science/" class="button">Our Blog</a></li>
               </ul>
 						</footer>
 					</div>

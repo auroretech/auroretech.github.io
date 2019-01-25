@@ -1,149 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-    <url>
-      <loc>/blog/%E4%B8%8D%E8%A6%81%E6%B8%A9%E9%A1%BA%E7%9A%84%E8%B5%B0%E8%BF%9B%E9%82%A3%E4%B8%AA%E8%89%AF%E5%A4%9C/</loc>
-      
-        <lastmod>2018-07-08T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/%E6%A1%A3%E6%A1%88/</loc>
-      
-        <lastmod>2018-07-07T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/CommentSystem/</loc>
-      
-        <lastmod>2018-07-02T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/%E6%AF%95%E4%B8%9A%E5%AD%A3/</loc>
-      
-        <lastmod>2018-06-30T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/GIRL/</loc>
-      
-        <lastmod>2018-06-17T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/welcome-to-massively-the-jekyll-theme/</loc>
-      
-        <lastmod>2017-10-31T00:00:00+08:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-  
-    <url>
-      <loc>/elements/</loc>
-       <lastmod>2017-11-02T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.7</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/</loc>
-       <lastmod>2018-06-18T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>1.0</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/computer-science/</loc>
-       <lastmod>2018-07-12T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>1.0</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/blog/</loc>
-       <lastmod>2017-11-02T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>1.0</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/comment-policy/</loc>
-       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.5</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/about/</loc>
-       <lastmod>2017-11-02T00:00:00+08:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.7</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/sitemap.xml</loc>
-       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.5</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/feed.xml</loc>
-       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.5</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/feed.xslt.xml</loc>
-       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.5</priority>
-      
-     </url>
-  
+<url>
+<loc>http://localhost:4000/computer-science/Catalogue-of-CS/</loc>
+<lastmod>2018-07-13T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/computer-science/KMP-Algorithm/</loc>
+<lastmod>2018-09-13T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/computer-science/Create-BinaryTree/</loc>
+<lastmod>2019-01-24T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/welcome-to-massively-the-jekyll-theme/</loc>
+<lastmod>2017-10-31T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/GIRL/</loc>
+<lastmod>2018-06-17T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/%E6%AF%95%E4%B8%9A%E5%AD%A3/</loc>
+<lastmod>2018-06-30T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/CommentSystem/</loc>
+<lastmod>2018-07-02T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/%E6%A1%A3%E6%A1%88/</loc>
+<lastmod>2018-07-07T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/%E4%B8%8D%E8%A6%81%E6%B8%A9%E9%A1%BA%E7%9A%84%E8%B5%B0%E8%BF%9B%E9%82%A3%E4%B8%AA%E8%89%AF%E5%A4%9C/</loc>
+<lastmod>2018-07-08T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/Jotting/</loc>
+<lastmod>2018-08-19T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/elements/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/computer-science/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/comment-policy/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/page2/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/google88145cf2c0db7cbf.html</loc>
+<lastmod>2019-01-25T12:42:17+08:00</lastmod>
+</url>
 </urlset>

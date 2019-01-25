@@ -14,18 +14,18 @@
 <title>Welcome to Massively: The Jekyll Theme!</title>
 <meta name="description" content="">
 
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
-<link rel="manifest" href="/assets/icon/manifest.json">
-<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="shortcut icon" href="/assets/icon/favicon.ico">
-<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="http://localhost:4000/assets/icon/manifest.json">
+<link rel="mask-icon" href="http://localhost:4000/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="http://localhost:4000/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="http://localhost:4000/assets/icon/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
 
 <!-- CSS -->
-<link rel="stylesheet" href="/assets/css/main.css" />
-<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="http://localhost:4000/assets/css/noscript.css" /></noscript>
 
 <!-- COMMENT -->
 <link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
@@ -41,19 +41,19 @@
 
 				<!-- Header -->
         <header id="header">
-          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+          <a href="http://localhost:4000/" class="logo">WHO YOU WANT TO BE</a>
         </header>
 
 				<!-- Nav -->
 					<nav id="nav">
 
             <ul class="links">
-  <li class=""><a href="/">Home</a></li>
-  <li class=""><a href="/about/">About</a></li>
-  <li class=" active "><a href="/blog/">Blog</a></li>
-  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
-  <li class=""><a href="/computer-science/">Computer Science</a></li>
-  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+  <li class=""><a href="http://localhost:4000/">Home</a></li>
+  <li class=""><a href="http://localhost:4000/about/">About</a></li>
+  <li class=" active "><a href="http://localhost:4000/blog/">Blog</a></li>
+  <!--   <li class=""><a href="http://localhost:4000/elements/">Elements Reference</a></li>    -->
+  <li class=""><a href="http://localhost:4000/computer-science/">Computer Science</a></li>
+  <li class=""><a href="http://localhost:4000/comment-policy/">Comment Policy</a></li>
 
 </ul>
 
@@ -87,18 +87,17 @@
 <h2 id="features">Features</h2>
 <h3 id="auto-generating-sitemap">Auto-Generating Sitemap</h3>
 <p>The sitemap is auto generated! Just simply change the front matter of each site. It looks like so…</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sitemap:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sitemap:
     priority: 0.7
     lastmod: 2017-11-02
     changefreq: weekly
-</code></pre>
-</div>
+</code></pre></div></div>
 <h3 id="formspring-integration">Formspring integration</h3>
 <p>The contact form below each page on the footer actually collects information! Just change your email address in the <code class="highlighter-rouge">_config.yml</code> file!</p>
 </p>
       	  </section>
 	  
-          ﻿
+          
       <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
       <script src="/assets/js/iDisqus.min.js"></script>
     <body>
@@ -110,10 +109,11 @@
                 forum: 'auroretech',
                 site: 'https://www.auroretech.com',
                 api: 'http://45.78.40.30',
-                mode: 2,
+                mode: 3,
+                init: true,
                 timeout: 3000,
                 popular: document.getElementById('popular-posts'),
-                init: true,
+                autoCreate: true,
             });
             disq.popular();
             disq.count();
@@ -125,7 +125,7 @@
 					<!-- Footer -->
 						<footer>
               <ul class="actions">
-                <li><a href="/blog/" class="button">Our Blog</a></li>
+                <li><a href="http://localhost:4000/blog/" class="button">Our Blog</a></li>
               </ul>
 						</footer>
 					</div>
@@ -185,12 +185,13 @@
 
       <!-- Scripts -->
   		<!-- DYN -->
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery.scrollex.min.js"></script>
-<script src="/assets/js/jquery.scrolly.min.js"></script>
-<script src="/assets/js/skel.min.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrollex.min.js"></script>
+<script src="http://localhost:4000/assets/js/jquery.scrolly.min.js"></script>
+<script src="http://localhost:4000/assets/js/skel.min.js"></script>
+<script src="http://localhost:4000/assets/js/util.js"></script>
+<script src="http://localhost:4000/assets/js/main.js"></script>
+
 
 			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
 <script>
