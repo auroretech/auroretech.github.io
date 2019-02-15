@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>taobao login</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="/assets/icon/manifest.json">
+<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="/">Home</a></li>
+  <li class=""><a href="/about/">About</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
+  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
+  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">15 Feb 2019</span>
+      				<h1>taobao login</h1>
+      				<p>模拟淘宝的登陆过程...</p>
+      			</header>
+      			<div class="image main"><img src="/images/taobaologin.jpg" alt=""></div>
+      			<p><div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/ env python3
+# -*-coding:utf-8-*-
+</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">urllib.error</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">http.cookiejar</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">import</span> <span class="nn">urllib.error</span>
+
+<span class="c1"># TODO:使用header的data发送请求模拟登陆
+# 模拟登陆淘宝taobao.com 并获取响应
+</span>
+<span class="k">class</span> <span class="nc">TSpiderUnity</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># for init the parameter
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">login_url</span> <span class="o">=</span> <span class="s">'https://login.taobao.com/member/login.jhtml'</span> <span class="c1">#登陆url
+</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="o">=</span> <span class="s">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ua</span> <span class="o">=</span><span class="s">'115#1WPQC11O1Tac9evwGCnA1CsoE562Cnf61gqiOsXM+5i14UPClpLe1HKouXCCI8c0jaUz+uTQ18pXszEQ9gf1bvz8ukNQi/KIUaUXAyVVaiJfyo+QAlFPen/8yzZQi/WJh5/8vBNDaLBfy5fpvn39IrL8ukZQgQXRhEPCOSgaCY9XuzFZASAyeKa8ukNQiFMJhUU4AWNcaB6fyzFQgSPoTRDv5h1pxfMSHmGsO7ZkdQQNr6RgtQ6NXzUq75rquEKbeLj9WPaKT+P5CC9yF1XwZ3t2Yk1fxYau4cjhT9vh7w10TxRBcxvj7p790EOaletqJog/ojbmRKdgmGmzUZ6TN8/mMAZxjZQNiUWrWsDNPIzo1H+tyCppS6YA4UGK+AhQSI0NGIn0Nj3UJrU5FtyoBZ6Cuh0AnwDQvLHeGnYhaFJB8jSGxa/T51BH0hxNEKnbXWgyhnDr/MLE2oTbuIJDRhJe1RxnZXqBpmKUj69pf01htpwWBKqXfBHrKxzCt9OBLCtunoQ2EAJLek03vPH0LIXg0NZC2UaLTZEFNg2BkZOehN6AiskQThsNGlLqrNNRd7dgNX4kT3HiCJkzZjpTgrU9xaC49/j+ug8wIS/F1mOAZMMKmrP6gNfGeKD/SL2WQOK8um2pT28VqIlFqs4IYWM2FPUMI1SLNuhee+m7sOEzxD6SIqsaHddm616LhIg+Lfd7PL5eNNay9CD0fhm1ZYPekO+P6B0zMjFv5UMEBseUopP8yVIMN9X6LSlpKiCyVCYWN4NejnDBCWTz+kCt90QqeI7oSMvQsRxRGS57JOTDSbqyUY18WSqpYgLSFLcrXSfG5gAbd+7/K7HtExhjfjM4UKn5QeiUVp6nqRlRt1mHmqTbLp0b70Um/NC/GUTqsm8FcbbA0aavIB3sAsptJxqy10DoAt+onh5OjmnF+5AkB/nRmFdaGekYUTUTkIzzFJ9ZpN1g8TCFSi6bgSWDLt/jmSdIvG5VBQksZv+C7PnoIWYp714dsnYZYH9Tq2UwRVRVJ974O48lOHaUL8vbHx8RP5M0DRyBuiCwpFIOoDZvp9Mx9DVwEPW4/f=='</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TPL_username</span> <span class="o">=</span> <span class="s">'xxx'</span>  <span class="c1"># 此处为自己的账号
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">TPL_password_2</span> <span class="o">=</span> <span class="s">'15d6edce27e804e7f5b6dbf8aab507fe27f0c61ef18e28feb256674619f98ab773649a7225ad85ad710dc8d7d1001f295aed8e9710bbbf93dc8c94fbe8de26582be13b2d36b005e4b8bf4114acc6453c0fcbc7f3febb5fa9b72861077d07a9ffc3bc2bb61ffbfdeb4657ca352a163d6654ae19d7cde02e4cf4512574f822cc12'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'TPL_username'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">TPL_username</span><span class="p">,</span>
+            <span class="s">'TPL_password'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'ncoToken'</span><span class="p">:</span> <span class="s">'2e70113c078b084d51b5a0a0fce2f7755c880295'</span><span class="p">,</span>
+            <span class="s">'slideCodeShow'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span>
+            <span class="s">'useMobile'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span>
+            <span class="s">'lang'</span><span class="p">:</span> <span class="s">'zh_CN'</span><span class="p">,</span>
+            <span class="s">'loginsite'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span>
+            <span class="s">'newlogin'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span>
+            <span class="s">'TPL_redirect_url'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'from'</span><span class="p">:</span> <span class="s">'tb'</span><span class="p">,</span>
+            <span class="s">'fc'</span><span class="p">:</span> <span class="s">'default'</span><span class="p">,</span>
+            <span class="s">'style'</span><span class="p">:</span> <span class="s">'default'</span><span class="p">,</span>
+            <span class="s">'css_style'</span><span class="p">:</span><span class="s">''</span><span class="p">,</span>
+            <span class="s">'keyLogin'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span>
+            <span class="s">'qrLogin'</span><span class="p">:</span> <span class="s">'true'</span><span class="p">,</span>
+            <span class="s">'newMini'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span>
+            <span class="s">'newMini2'</span><span class="p">:</span> <span class="s">'false'</span><span class="p">,</span>
+            <span class="s">'tid'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'loginType'</span><span class="p">:</span> <span class="s">'3'</span><span class="p">,</span>
+            <span class="s">'minititle'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'minipara'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'pstrong'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'sign'</span><span class="p">:</span> <span class="s">''</span> <span class="p">,</span>
+            <span class="s">'need_sign'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'isIgnore'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'full_redirect'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'sub_jump'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'popid'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'callback'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'guf'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'not_duplite_str'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'need_user_id'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'poy'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'gvfdcname'</span><span class="p">:</span> <span class="s">'10'</span><span class="p">,</span>
+            <span class="s">'gvfdcre'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'from_encoding'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'sub'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'TPL_password_2'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">TPL_password_2</span><span class="p">,</span>
+            <span class="s">'loginASR'</span><span class="p">:</span> <span class="s">'1'</span><span class="p">,</span>
+            <span class="s">'loginASRSuc'</span><span class="p">:</span> <span class="s">'1'</span><span class="p">,</span>
+            <span class="s">'allp'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'oslanguage'</span><span class="p">:</span> <span class="s">'zh-CN'</span><span class="p">,</span>
+            <span class="s">'sr'</span><span class="p">:</span> <span class="s">'1366*768'</span><span class="p">,</span>
+            <span class="s">'osVer'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'naviVer'</span><span class="p">:</span> <span class="s">'chrome|71.0357898'</span><span class="p">,</span>
+            <span class="s">'osACN'</span><span class="p">:</span> <span class="s">'Mozilla'</span><span class="p">,</span>
+            <span class="s">'osAV'</span><span class="p">:</span> <span class="s">'5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span><span class="p">,</span>
+            <span class="s">'osPF'</span><span class="p">:</span> <span class="s">'Win32'</span><span class="p">,</span>
+            <span class="s">'miserHardInfo'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'appkey'</span><span class="p">:</span> <span class="s">'00000000'</span><span class="p">,</span>
+            <span class="s">'nickLoginLink'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'mobileLoginLink'</span><span class="p">:</span> <span class="s">'https://login.taobao.com/member/login.jhtml?useMobile = true'</span><span class="p">,</span>
+            <span class="s">'showAssistantLink'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
+            <span class="s">'um_token'</span><span class="p">:</span> <span class="s">'HV02PAAZ0b83c243b7c64b415c2f8ab1077f72e3999999'</span><span class="p">,</span>
+            <span class="s">'ua'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ua</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'Origin'</span><span class="p">:</span> <span class="s">'https://login.taobao.com'</span><span class="p">,</span>
+            <span class="s">'Referer'</span><span class="p">:</span> <span class="s">'https://login.taobao.com/member/login.jhtml'</span><span class="p">,</span>
+            <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/x-www-form-urlencoded'</span><span class="p">,</span>
+            <span class="s">'User-Agent'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers2</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'User-Agent'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cookie</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">CookieJar</span><span class="p">()</span>  <span class="c1"># 设置cookie
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">cookie_handler</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cookie</span><span class="p">)</span>  <span class="c1"># handler of cookie
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cookie_handler</span><span class="p">)</span>  <span class="c1"># Link to OpenerDirector
+</span>        <span class="c1"># 对 data数据编码
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">post_data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'ascii'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__send_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># for send request and return response
+</span>        <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">login_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post_data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>  <span class="c1"># 请求行和请求头构成一个请求
+</span>        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>  <span class="c1"># 使用OpenerDirector 的open()方法请求 url或 request,得到响应值
+</span>        <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'HTTPError: The server couldn</span><span class="se">\'</span><span class="s">t fulfill the request.'</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">HTTPError Code: '</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">HTTPError Reason: '</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">URLError: We failed to reach a server.'</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">URLError Reason'</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">No Error Occurs !'</span><span class="p">)</span>
+            <span class="c1"># response encoded
+</span>            <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># 字节串编码格式
+</span>            <span class="k">return</span> <span class="n">content</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">ErrorProcessed !'</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'...............................................'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__parse_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># for parse the content using regex
+</span>        <span class="n">bytes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__send_request</span><span class="p">()</span>
+        <span class="c1"># decode
+</span>        <span class="n">content</span> <span class="o">=</span> <span class="n">bytes_</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'gbk'</span><span class="p">)</span>  <span class="c1"># 解码gbk的编码格式
+</span>        <span class="k">return</span> <span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">__re_parse_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># arrange the flow of action
+</span>        <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parse_response</span><span class="p">()</span>
+        <span class="c1">#print(content)
+</span>        <span class="c1"># 成功获得具有 "页面跳转中”的字样，说明成功登陆 ，之后我们提取
+</span>        <span class="c1"># "https://passport.alibaba.com/mini_apply_st.js?site=0&amp;token=1dODbiZbrk3ZM5VbfYWv5AA&amp;callback=callback"
+</span>        <span class="c1"># 中的 token字样
+</span>
+        <span class="c1"># 使用 re提取token
+</span>        <span class="n">token</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'(?&lt;=token=)(.*)(?=&amp;callback)'</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+       <span class="c1"># print(token)
+</span>        <span class="n">url2</span> <span class="o">=</span> <span class="s">'https://passport.alibaba.com/mini_apply_st.js?site=0&amp;token=</span><span class="si">%</span><span class="s">s&amp;callback=callback'</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># 进一步获取内容st
+</span>        <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>  <span class="c1"># 获得返回值
+</span>        <span class="n">content_token</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+        <span class="c1">#print(content_token)
+</span>        <span class="k">return</span> <span class="n">content_token</span>
+
+    <span class="k">def</span> <span class="nf">__re_re_parse_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 上一步获得token后我们继续提取st值
+</span>        <span class="n">content_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__re_parse_response</span><span class="p">()</span>
+        <span class="n">st</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'(?&lt;={"st":")(.*)"}'</span><span class="p">,</span> <span class="n">content_token</span><span class="p">)</span>
+        <span class="c1">#print(st)
+</span>        <span class="k">return</span> <span class="n">st</span>
+
+    <span class="c1">#"""
+</span>    <span class="k">def</span> <span class="nf">__get_login_html</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 当我们获取st值后，通过 st, TPL_usrname可以登陆
+</span>        <span class="n">st</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__re_re_parse_response</span><span class="p">()</span>
+        <span class="n">final_login_url</span> <span class="o">=</span> <span class="s">'https://login.taobao.com/member/vst.htm?st=</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">final_login_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers2</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>  <span class="c1"># st opener打开带有新的cookie
+</span>        <span class="n">str_content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"gbk"</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">str_content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">str_content</span>
+    <span class="c1">#"""
+</span>
+    <span class="k">def</span> <span class="nf">__get_final_html</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">str_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_login_html</span><span class="p">()</span>
+        <span class="c1"># 提取top_location_href
+</span>        <span class="n">list_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'(?&lt;=top.location.href = ")(.*)(?=";)'</span><span class="p">,</span> <span class="n">str_content</span><span class="p">)</span>
+        <span class="n">top_location_href</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">list_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">top_location_href</span><span class="p">)</span>
+        <span class="n">top_location_href_req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">top_location_href</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers2</span><span class="p">)</span>
+        <span class="n">top_location_href_opener_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">top_location_href_req</span><span class="p">)</span>
+        <span class="n">man_page</span> <span class="o">=</span> <span class="n">top_location_href_opener_response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+        <span class="c1">#print(man_page)
+</span>
+        <span class="c1"># 我们已经成功登陆，通过调用一个登陆后的第一个网页，可以得到有关“已买到宝贝”等的信息
+</span>        <span class="c1"># 在manpage尝试提取“已买到宝贝”网页，并获取响应页面
+</span>
+        <span class="c1"># 1.5.2019 1:18还是失败，很大可能是cookie处理的不对，或者头部信息缺失？
+</span>        <span class="c1"># TODO:再浏览一遍请求的header
+</span>        <span class="c1"># 1.5.2019 22:43 难道淘宝的登陆方式为什么显示的和请求的页面，差一个未登录呢？？？？
+</span>
+        <span class="n">have_bought_href</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'(?&lt;=&lt;a id="bought" href=")(.*)(?=")'</span><span class="p">,</span> <span class="n">man_page</span><span class="p">)</span>
+        <span class="n">have_bought_url</span> <span class="o">=</span> <span class="s">'https:'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">have_bought_href</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">have_bought_url</span><span class="p">)</span>
+        <span class="c1"># have_bought_req = urllib.request.Request(have_bought_url, headers=self.headers2)
+</span>        <span class="n">have_bought_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opener</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">have_bought_url</span><span class="p">)</span>
+        <span class="n">list_bought_item</span> <span class="o">=</span> <span class="n">have_bought_response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'gbk'</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">list_bought_item</span><span class="p">)</span>
+        <span class="c1"># 现在用regex解析，提取“已买到的宝贝”的链接
+</span>
+    <span class="k">def</span> <span class="nf">start_crawl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#self.__re_parse_response()
+</span>       <span class="c1"># self.__re_re_parse_response()
+</span>        <span class="c1">#self.__get_login_html()
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__get_final_html</span><span class="p">()</span>
+
+
+        <span class="c1"># 验证码的情形先不考虑
+</span>
+
+<span class="n">taobao</span> <span class="o">=</span> <span class="n">TSpiderUnity</span><span class="p">()</span>
+<span class="n">taobao</span><span class="o">.</span><span class="n">start_crawl</span><span class="p">()</span>
+</code></pre></div></div>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>

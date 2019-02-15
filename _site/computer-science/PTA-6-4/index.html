@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<title>Catalogue of CS</title>
+<title>6-4 链式表的按序号查找</title>
 <meta name="description" content="">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
@@ -70,19 +70,80 @@
 				<div id="main">
           <section class="post">
     				<header class="major">
-      				<span class="date">13 Jul 2018</span>
-      				<h1>Catalogue of CS</h1>
-      				<p>reuse the html doc to achieve the different catalogue of blog...</p>
+      				<span class="date">19 Jan 2019</span>
+      				<h1>6-4 链式表的按序号查找</h1>
+      				<p>from pta...</p>
       			</header>
-      			<div class="image main"><img src="/images/7-13.jpg" alt=""></div>
-      			<p><blockquote>
-  <h3 id="time-">Time <br /></h3>
-  <p>2018-07-13 00:51 AM</p>
-</blockquote>
+      			<div class="image main"><img src="/images/pta.png" alt=""></div>
+      			<p><p>From <a href="https://pintia.cn/problem-sets/15/problems/724">PTA</a>.</p>
 
-<p>Fix the comment’s error of format.<br />
-Then achieve the different catalogue of blog.<br />
-But a lot of trouble need to be done.such as the comment’s some format,and the top margin of whole page.</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 本题要求实现一个函数，找到并返回链式表的第K个元素。
+ * 函数接口定义：
+ * ElementType FindKth( List L, int K );
+ * 其中List结构定义如下：
+ * typedef struct LNode *PtrToLNode;
+ * struct LNode {
+ *     ElementType Data;
+ *     PtrToLNode Next;
+ * };
+ * typedef PtrToLNode List;
+ * 
+ * L是给定单链表，函数FindKth要返回链式表的第K个元素。如果该元素不存在，则返回ERROR。
+ * 
+ **/</span>
+
+
+<span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span>
+<span class="cp">#define ERROR -1
+</span><span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElementType</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">LNode</span> <span class="o">*</span><span class="n">PtrToLNode</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">LNode</span> <span class="p">{</span>
+    <span class="n">ElementType</span> <span class="n">Data</span><span class="p">;</span>
+    <span class="n">PtrToLNode</span> <span class="n">Next</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">PtrToLNode</span> <span class="n">List</span><span class="p">;</span>
+
+<span class="n">List</span> <span class="n">Read</span><span class="p">();</span> <span class="cm">/* 细节在此不表 */</span>
+
+<span class="n">ElementType</span> <span class="n">FindKth</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">K</span> <span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">;</span>
+    <span class="n">ElementType</span> <span class="n">X</span><span class="p">;</span>
+    <span class="n">List</span> <span class="n">L</span> <span class="o">=</span> <span class="n">Read</span><span class="p">();</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span> <span class="n">N</span><span class="o">--</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">K</span><span class="p">);</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">FindKth</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">K</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">X</span><span class="o">!=</span> <span class="n">ERROR</span> <span class="p">)</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"NA "</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 你的代码将被嵌在这里 */</span>
+
+<span class="n">ElementType</span> <span class="nf">FindKth</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">K</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">L</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">K</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </p>
       	  </section>
 	  

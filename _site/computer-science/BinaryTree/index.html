@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>Binary Tree</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="/assets/icon/manifest.json">
+<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="/">Home</a></li>
+  <li class=""><a href="/about/">About</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
+  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
+  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">15 Feb 2019</span>
+      				<h1>Binary Tree</h1>
+      				<p>关于二叉树先序、中序、后序和层序...</p>
+      			</header>
+      			<div class="image main"><img src="/images/tree.jpg" alt=""></div>
+      			<p><h2 id="二叉树的构造"><strong>二叉树的构造</strong></h2>
+
+<h2 id="binarytreeh"><code class="highlighter-rouge">"binarytree.h"</code></h2>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma once
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+</span>
+<span class="cp">#ifndef BINARY_TREE
+#define BINARY_TREE
+</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">data_t</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">node</span>
+<span class="p">{</span>
+	<span class="n">data_t</span> <span class="n">data</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">lchild</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">rchild</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">//先序遍历的递归实现</span>
+<span class="kt">int</span> <span class="n">pre_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+<span class="c1">//中序遍历递归实现</span>
+<span class="kt">int</span> <span class="n">in_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+<span class="c1">//后序遍历递归实现</span>
+<span class="kt">int</span> <span class="n">post_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+<span class="c1">//层序遍历队列实现</span>
+<span class="kt">int</span> <span class="n">layer_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">);</span>
+
+<span class="cm">/* 
+ * 
+ * void CreateBiTree(BiTree &amp;T)
+ * {
+ *	 char ch;
+ *	 cin&gt;&gt;ch;
+ *	 if(ch=='#') 
+ *		 T=NULL;
+ *	 else
+ *	 {
+ *		 T= new BiTreeNode;
+ *		 if(!T) exit(0);
+ *		 T-&gt;data=ch; 
+ *		 CreateBiTree(T-&gt;lchild);  
+ *		 CreateBiTree(T-&gt;rchild); 
+ *	 }
+ * 使用此方式要求使用者"以一种正确的方式"来完全的输入合适数量的#表示空树来完成整个二叉树的构建，很是不便。
+ */</span>
+
+<span class="c1">//使用先序序列和中序序列来构建二叉树</span>
+<span class="n">node</span><span class="o">*</span> <span class="n">createbt</span><span class="p">(</span><span class="kt">int</span> <span class="n">PreL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">PreR</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inR</span><span class="p">);</span>
+
+<span class="cp">#endif // !BINARY_TREE
+</span></code></pre></div></div>
+
+<h2 id="binarytreecpp"><code class="highlighter-rouge">"binarytree.cpp"</code></h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include "pch.h"
+#include "binarytree.h"
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">maxn</span><span class="p">;</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="n">pre</span><span class="p">[],</span> <span class="n">in</span><span class="p">[],</span> <span class="n">post</span><span class="p">[];</span>
+
+<span class="cp">#ifdef BINARY_TREE
+</span><span class="c1">//二叉树先序遍历</span>
+<span class="kt">int</span> <span class="nf">pre_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+	<span class="n">pre_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">);</span>
+	<span class="n">pre_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//二叉树中序遍历</span>
+<span class="kt">int</span> <span class="nf">in_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">in_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">);</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+	<span class="n">in_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">post_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">in_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">);</span>
+	<span class="n">in_order</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">);</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">layer_order</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span><span class="c1">//使用队列实现类似BFS搜索的层序遍历</span>
+	<span class="n">queue</span><span class="o">&lt;</span><span class="n">node</span><span class="o">*&gt;</span> <span class="n">q</span><span class="p">;</span> <span class="c1">//队列存地址</span>
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span> <span class="c1">//根结点入队</span>
+	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">node</span><span class="o">*</span> <span class="n">now</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="c1">//取出队首元素</span>
+		<span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span> <span class="c1">//出队</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">now</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">now</span><span class="o">-&gt;</span><span class="n">lchild</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">now</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">now</span><span class="o">-&gt;</span><span class="n">rchild</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">now</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*             使用先序和中序来构建二叉树：原理
+ * 层序序列: 单独分析
+
+ *           ------左子树------    -----右子树-----    根
+ * 后序序列: pos1 pos2 ...   posk  posk+1 ....posn-1   posn
+
+
+ *           根    -----左子树-------   -----右子树------
+ * 先序序列: preL pre2 pre3 ......prek   prek+1 ..... preR
+
+
+ * 中序序列: inL  in2 in3 ..ink-1 ink    ink+1 ...    inR
+ *           --------左子树------  根   ------右子树------
+ * 以先序和中序为例：
+ * preL == ink ----&gt;找到k
+ * 根据中序得知左子树结点个数 numberLeft = k - inL
+ * 先序:左子树区间[preL+1, preL + numberLeft] 右子树区间 [preL+numberLeft + 1, preR]
+ * 中序:左子树区间[inL, k-1] 右子树区间[k+1, inR]
+ */</span>
+
+<span class="n">node</span><span class="o">*</span> <span class="nf">createbt</span><span class="p">(</span><span class="kt">int</span> <span class="n">PreL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">PreR</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inR</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">PreL</span> <span class="o">&gt;</span> <span class="n">PreR</span><span class="p">)</span><span class="k">return</span> <span class="nb">nullptr</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">node</span><span class="p">;</span><span class="c1">//创建二叉树根结点</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="n">PreL</span><span class="p">];</span> <span class="c1">//根结点值域</span>
+	<span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="n">inL</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">inR</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">pre</span><span class="p">[</span><span class="n">PreL</span><span class="p">])</span><span class="k">break</span><span class="p">;</span><span class="c1">//寻找中序中的根，以便区分左子树和右子树</span>
+	<span class="kt">int</span> <span class="n">numLeft</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="n">inL</span><span class="p">;</span> <span class="c1">//左子树的结点个数</span>
+
+	<span class="c1">//返回左子树根结点，递归。</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span> <span class="o">=</span> <span class="n">createbt</span><span class="p">(</span><span class="n">PreL</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PreL</span> <span class="o">+</span> <span class="n">numLeft</span><span class="p">,</span> <span class="n">inL</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="c1">//返回右子树根结点，递归。</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span> <span class="o">=</span> <span class="n">createbt</span><span class="p">(</span><span class="n">PreL</span> <span class="o">+</span> <span class="n">numLeft</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PreR</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inR</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif // BINARY_TREE
+</span></code></pre></div></div>
+
+<h2 id="treescpp"><code class="highlighter-rouge">"trees.cpp"</code></h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * 主程序main()
+ * using VStudio
+ */</span>
+<span class="cp">#include "pch.h"
+#include "binarytree.h"
+</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">pre</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">in</span><span class="p">[</span><span class="n">maxn</span><span class="p">],</span> <span class="n">post</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"输入结点数:"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"输入先序序列:"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"输入中序序列:"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="n">createbt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="n">layer_order</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+	<span class="n">system</span><span class="p">(</span><span class="s">"pause"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>

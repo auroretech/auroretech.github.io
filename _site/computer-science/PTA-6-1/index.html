@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<title>Beautiful Girl</title>
+<title>6-1 单链表逆转</title>
 <meta name="description" content="">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
@@ -50,9 +50,9 @@
             <ul class="links">
   <li class=""><a href="/">Home</a></li>
   <li class=""><a href="/about/">About</a></li>
-  <li class=" active "><a href="/blog/">Blog</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
   <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
-  <li class=""><a href="/computer-science/">Computer Science</a></li>
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
   <li class=""><a href="/comment-policy/">Comment Policy</a></li>
 
 </ul>
@@ -70,31 +70,98 @@
 				<div id="main">
           <section class="post">
     				<header class="major">
-      				<span class="date">17 Jun 2018</span>
-      				<h1>Beautiful Girl</h1>
-      				<p>I THOUGHT YOU WERE THE ONE</p>
+      				<span class="date">19 Jan 2019</span>
+      				<h1>6-1 单链表逆转</h1>
+      				<p>from pta...</p>
       			</header>
-      			<div class="image main"><img src="/images/love.jpg" alt=""></div>
-      			<p><h2 id="to-mrsjin">To Mrs.Jin</h2>
+      			<div class="image main"><img src="/images/pta.png" alt=""></div>
+      			<p><p>From <a href="https://pintia.cn/problem-sets/15/problems/724">PTA</a>.</p>
 
-<blockquote>
-  <p>To the girl</p>
-</blockquote>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 本题要求实现一个函数，将给定的单链表逆转
+ * 接口定义: 
+ * List Reverse( List L );
+ * typedef struct Node *PtrToNode;
+ * struct Node {
+ *      ElementType Data;  存储结点数据 
+ *      PtrToNode   Next;  指向下一个结点的指针 
+ *  };
+ *  typedef PtrToNode List;  定义单链表类型 
+ * 
+ **/</span>
 
-<p>Dear Mrs.zhang,i was so sorry to hurt you sometimes(but not too frequency ha).i had a headache today <br /> whatever walking ,lying,or talking,it  torment me and i get crazy.<br />But i know that not the excuse to broke your heart.i didn`t mean it in my deep heart.<br />
-I loved you so much.i`m looking forward to our future,our beautiful future,which brings me to tomorrow with hope.<br />I will hold you tightly both in my hand and my heart. <br />张锦坤,我爱你!我爱你!我爱你!<br />愿我如星君如月，夜夜流光相皎洁。－范成大《车遥遥篇》<br /></p>
 
+<span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElementType</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">Node</span> <span class="o">*</span><span class="n">PtrToNode</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="n">ElementType</span> <span class="n">Data</span><span class="p">;</span>
+    <span class="n">PtrToNode</span>   <span class="n">Next</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">PtrToNode</span> <span class="n">List</span><span class="p">;</span>
+
+<span class="n">List</span> <span class="n">Read</span><span class="p">();</span> <span class="cm">/* 细节在此不表 */</span>
+<span class="kt">void</span> <span class="n">Print</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span> <span class="p">);</span> <span class="cm">/* 细节在此不表 */</span>
+
+<span class="n">List</span> <span class="n">Reverse</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span> <span class="p">);</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">List</span> <span class="n">L1</span><span class="p">,</span> <span class="n">L2</span><span class="p">;</span>
+    <span class="n">L1</span> <span class="o">=</span> <span class="n">Read</span><span class="p">();</span>
+    <span class="n">L2</span> <span class="o">=</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">L1</span><span class="p">);</span>
+    <span class="n">Print</span><span class="p">(</span><span class="n">L1</span><span class="p">);</span>
+    <span class="n">Print</span><span class="p">(</span><span class="n">L2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 你的代码将被嵌在这里 */</span>
+<span class="n">List</span> <span class="nf">Reverse</span><span class="p">(</span><span class="n">List</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">List</span> <span class="n">temp</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">L</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+		<span class="n">L</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+		<span class="n">temp</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+		<span class="n">L</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </p>
       	  </section>
 	  
           
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
 
 	  
 
 					<!-- Footer -->
 						<footer>
               <ul class="actions">
-                <li><a href="/blog/" class="button">Our Blog</a></li>
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
               </ul>
 						</footer>
 					</div>

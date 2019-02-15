@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>1020 Tree Traversals Again</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="/assets/icon/manifest.json">
+<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="/">Home</a></li>
+  <li class=""><a href="/about/">About</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
+  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
+  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">24 Jan 2019</span>
+      				<h1>1020 Tree Traversals Again</h1>
+      				<p>from pta...</p>
+      			</header>
+      			<div class="image main"><img src="/images/pta.png" alt=""></div>
+      			<p><p>From <a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805485033603072">PTA</a>.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Tree Traversals Again （25 分）
+ * An inorder binary tree traversal can be implemented in a non-recursive way with a stack.
+   For example, suppose that when a 6-node binary tree (with the keys numbered from 1 to 6) is traversed, the stack operations are: push(1); push(2); push(3); pop(); pop(); push(4); pop(); pop(); push(5); push(6); pop(); pop(). 
+   Then a unique binary tree (shown in Figure 1) can be generated from this sequence of operations. Your task is to give the postorder traversal sequence of this tree.
+ * Input Specification:
+   Each input file contains one test case. For each case, the first line contains a positive integer N (≤30) which is the total number of nodes in a tree (and hence the nodes are numbered from 1 to N).
+   Then 2N lines follow, each describes a stack operation in the format: "Push X" where X is the index of the node being pushed onto the stack; or "Pop" meaning to pop one node from the stack.
+ * Output Specification:
+   For each test case, print the postorder traversal sequence of the corresponding tree in one line.
+   A solution is guaranteed to exist. All the numbers must be separated by exactly one space, and there must be no extra space at the end of the line.
+ * Sample Input:
+   6
+   Push 1
+   Push 2
+   Push 3
+   Pop
+   Pop
+   Push 4
+   Pop
+   Pop
+   Push 5
+   Push 6
+   Pop
+   Pop
+ * Sample Output:
+   3 4 2 6 5 1
+ * C++ Version:
+ */</span>
+
+<span class="cp">#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">node</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">lchild</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">rchild</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxlength</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">pre</span><span class="p">[</span><span class="n">maxlength</span><span class="p">],</span> <span class="n">in</span><span class="p">[</span><span class="n">maxlength</span><span class="p">];</span>
+<span class="n">node</span><span class="o">*</span> <span class="nf">create</span><span class="p">(</span><span class="kt">int</span> <span class="n">PreL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">PreR</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inR</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">PreL</span> <span class="o">&gt;</span> <span class="n">PreR</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">nullptr</span><span class="p">;</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">node</span><span class="p">;</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="n">PreL</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="n">inL</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">inR</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>  <span class="c1">//注意！这里是从[inL, inR]遍历，并不一定是0开始</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">pre</span><span class="p">[</span><span class="n">PreL</span><span class="p">])</span><span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="kt">int</span> <span class="n">numLeft</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="n">inL</span><span class="p">;</span>  <span class="c1">//中序来区分左右子树</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">PreL</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PreL</span> <span class="o">+</span> <span class="n">numLeft</span><span class="p">,</span> <span class="n">inL</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="n">PreL</span> <span class="o">+</span> <span class="n">numLeft</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PreR</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inR</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//global counter</span>
+<span class="kt">int</span> <span class="nf">postorder</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">);</span>
+	<span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">);</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+	<span class="n">num</span><span class="o">++</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span><span class="p">;}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">st</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">preIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">string</span> <span class="n">str</span><span class="p">;</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">str</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="s">"Push"</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">data</span><span class="p">;</span>
+			<span class="n">pre</span><span class="p">[</span><span class="n">preIndex</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+			<span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">else</span>  <span class="c1">//当push时为先序遍历；当pop时，取栈顶为中序遍历，别忘记pop出。</span>
+		<span class="p">{</span>
+			<span class="n">in</span><span class="p">[</span><span class="n">inIndex</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+			<span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>

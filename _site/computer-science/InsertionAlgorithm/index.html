@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>Insertion, Binary Insertion, Shell's Sort</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="/assets/icon/manifest.json">
+<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="/">Home</a></li>
+  <li class=""><a href="/about/">About</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
+  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
+  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">15 Feb 2019</span>
+      				<h1>Insertion, Binary Insertion, Shell's Sort</h1>
+      				<p>排序——插入类算法之直接插入排序、折半插入排序、希尔排序...</p>
+      			</header>
+      			<div class="image main"><img src="/images/insertionalgorithm.jpg" alt=""></div>
+      			<p><h2 id="插入类排序算法原理"><strong>插入类排序算法原理</strong></h2>
+
+<h2 id="insertionalgorithmh"><code class="highlighter-rouge">"InsertionAlgorithm.h"</code></h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma once
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+</span>
+<span class="cp">#define TEST
+#ifdef TEST
+#define testcase(name) cout &lt;&lt; name &lt;&lt; " test passed!" &lt;&lt; endl; 
+#endif // TEST
+</span>
+
+<span class="cp">#ifndef INSERTION_SORT
+#define INSERTION_SORT
+#define INSERTION_SORT_TESTCASE //Open for main()
+</span><span class="cm">/*
+ * 插入排序在实现上，通常采用in-place排序
+ * 在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。
+ * 最坏时间复杂度	O(n^2)
+ * 最优时间复杂度	O(n)
+ * 平均时间复杂度	O(n^2)
+ * 最坏空间复杂度	总共 O(n) ，需要辅助空间 O(1)
+ */</span>
+
+<span class="kt">int</span> <span class="n">insertion_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+
+<span class="cp">#endif // !INSERTION_SORT
+</span>
+
+<span class="cp">#ifndef BINARY_INSERTION_SORT
+#define BINARY_INSERTION_SORT
+</span><span class="c1">//#define BINARY_INSERTION_SORT_TESTCASE  //Open for main()</span>
+<span class="cm">/*
+ * 二分插入排序(折半插入)：采用二分查找法在比较操作上减少数目
+ * 
+ */</span>
+
+<span class="c1">// 二分查找位置key</span>
+<span class="kt">int</span> <span class="n">binary_insertion_sort</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">);</span>
+
+<span class="cp">#endif // !BINARY_INSERTION_SORT
+</span>
+
+<span class="cp">#ifndef SHELL_SORT
+#define SHELL_SORT
+</span><span class="c1">//#define SHELL_SORT_TESTCASE  //Open for main()</span>
+<span class="cm">/*
+ * 希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。
+ * 希尔排序是基于插入排序的以下两点性质而提出改进方法的：
+ * 插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率;
+ * 但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位;
+
+ * 算法实现：希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。
+   这样可以让一个元素可以一次性地朝最终位置前进一大步。
+   然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，
+   但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。
+
+
+   步长序列	最坏情况下复杂度
+    n/2^i         O(n^2)
+    2^k - 1       O(n^{3/2})
+    2^i 3^j       O( n\log^2 n )
+ */</span>
+
+<span class="kt">int</span> <span class="n">shell_sort</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">);</span>
+<span class="cp">#endif // !SHELL_SORT
+</span></code></pre></div></div>
+
+<h2 id="insertionalgorithmcpp"><code class="highlighter-rouge">"InsertionAlgorithm.cpp"</code></h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include "pch.h"
+#include "InsertionAlgorithm.h"
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">;</span>
+
+<span class="cp">#ifdef INSERTION_SORT
+</span>
+<span class="kt">int</span> <span class="nf">insertion_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+			<span class="n">j</span><span class="o">--</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif // INSERTION_SORT
+</span>
+
+<span class="cp">#ifdef BINARY_INSERTION_SORT
+</span>
+<span class="kt">int</span> <span class="nf">binary_insertion_sort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">auto</span> <span class="n">begin</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+	<span class="k">auto</span> <span class="n">key</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="k">auto</span> <span class="n">end</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+	<span class="k">auto</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">end</span> <span class="o">!=</span> <span class="n">mid</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">key</span> <span class="o">&lt;</span> <span class="o">*</span><span class="n">mid</span><span class="p">)</span>
+				<span class="n">end</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+			<span class="k">else</span>
+				<span class="n">begin</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="n">mid</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="c1">// 移动元素</span>
+		<span class="k">auto</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span>
+		<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">it</span><span class="o">--</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="o">*</span><span class="n">it</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">it</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="o">*</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+		<span class="c1">//下一次循环值</span>
+		<span class="n">key</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">end</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif // BINARY_INSERTION_SORT
+</span>
+
+<span class="cp">#ifdef SHELL_SORT
+</span><span class="cm">/*
+ * 
+ 伪代码：
+    input: an array a of length n with array elements numbered 0 to n − 1
+    inc &lt;- round(n/2)
+    while inc &gt; 0 do:    
+        for i = inc .. n − 1 do:        
+            temp &lt;- a[i]        
+            j &lt;- i        
+            while j ≥ inc and a[j − inc] &gt; temp do:            
+                a[j] &lt;- a[j − inc]            
+                j &lt;- j − inc        
+            a[j] &lt;- temp    
+        inc &lt;- round(inc / 2)
+ *
+ */</span>
+
+<span class="kt">int</span> <span class="nf">shell_sort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">size_type</span> <span class="n">gap</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">gap</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span> <span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">size_type</span> <span class="n">i</span> <span class="o">=</span> <span class="n">gap</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">auto</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="k">auto</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+			<span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="n">gap</span> <span class="o">&amp;&amp;</span> <span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">gap</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">temp</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">gap</span><span class="p">];</span>
+				<span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">gap</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">gap</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>	
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#endif // SHELL_SORT
+</span></code></pre></div></div>
+
+<h2 id="sortalgorithmcppmain"><code class="highlighter-rouge">"SortAlgorithm.cpp"(main())</code></h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include "pch.h"
+#include "InsertionAlgorithm.h"
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="cp">#ifdef INSERTION_SORT_TESTCASE
+</span>	<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+	<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">insertion_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">len</span><span class="p">))</span>
+		<span class="n">testcase</span><span class="p">(</span><span class="s">"insertion_sort"</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">begin</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">end</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span> <span class="n">it</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="cp">#endif // INSERTION_SORT_TESTCASE
+</span>
+<span class="cp">#ifdef BINARY_INSERTION_SORT_TESTCASE
+</span>	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">{</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ref_v1</span> <span class="o">=</span> <span class="n">v1</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">binary_insertion_sort</span><span class="p">(</span><span class="n">ref_v1</span><span class="p">))</span>
+		<span class="n">testcase</span><span class="p">(</span><span class="s">"binary_insertion_sort"</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">:</span> <span class="n">v1</span><span class="p">)</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+<span class="cp">#endif // BINARY_INSERTION_SORT_TESTCASE
+</span>
+<span class="cp">#ifdef SHELL_SORT_TESTCASE
+</span>	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v2_ref</span> <span class="o">=</span> <span class="n">v2</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">shell_sort</span><span class="p">(</span><span class="n">v2_ref</span><span class="p">))</span>
+		<span class="n">testcase</span><span class="p">(</span><span class="s">"shell_sort"</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">:</span> <span class="n">v2</span><span class="p">)</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="sc">' '</span><span class="p">;</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="cp">#endif // SHELL_SORT_TESTCASE
+</span>
+	<span class="n">system</span><span class="p">(</span><span class="s">"pause"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>

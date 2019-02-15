@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<title>6-5 链式表操作集</title>
+<meta name="description" content="">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+<link rel="manifest" href="/assets/icon/manifest.json">
+<link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/assets/icon/favicon.ico">
+<meta name="msapplication-config" content="/assets/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+
+<!-- COMMENT -->
+<link rel="stylesheet"  href="/assets/css/iDisqus.min.css" />
+
+<script src="/assets/js/iDisqus.min.js"></script>
+
+	</head>
+	<body class="is-loading">
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+        <header id="header">
+          <a href="/" class="logo">WHO YOU WANT TO BE</a>
+        </header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            <ul class="links">
+  <li class=""><a href="/">Home</a></li>
+  <li class=""><a href="/about/">About</a></li>
+  <li class=""><a href="/blog/">Blog</a></li>
+  <!--   <li class=""><a href="/elements/">Elements Reference</a></li>    -->
+  <li class=" active "><a href="/computer-science/">Computer Science</a></li>
+  <li class=""><a href="/comment-policy/">Comment Policy</a></li>
+
+</ul>
+
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+           <!--   <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>       -->
+              <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+              <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				<div id="main">
+          <section class="post">
+    				<header class="major">
+      				<span class="date">19 Jan 2019</span>
+      				<h1>6-5 链式表操作集</h1>
+      				<p>from pta...</p>
+      			</header>
+      			<div class="image main"><img src="/images/pta.png" alt=""></div>
+      			<p><p>From <a href="https://pintia.cn/problem-sets/15/problems/724">PTA</a>.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 本题要求实现链式表的操作集。
+ * 函数接口定义：
+ * Position Find( List L, ElementType X );
+ * List Insert( List L, ElementType X, Position P );
+ * List Delete( List L, Position P );
+ * 其中List结构定义如下：
+ * typedef struct LNode *PtrToLNode;
+ * struct LNode {
+ *     ElementType Data;
+ *     PtrToLNode Next;
+ * };
+ * typedef PtrToLNode Position;
+ * typedef PtrToLNode List;
+ * 
+ * Position Find( List L, ElementType X )：返回线性表中首次出现X的位置。若找不到则返回ERROR；
+ * List Insert( List L, ElementType X, Position P )：将X插入在位置P指向的结点之前，返回链表的表头。如果参数P指向非法位置，则打印“Wrong Position for Insertion”，返回ERROR；
+ * List Delete( List L, Position P )：将位置P的元素删除并返回链表的表头。若参数P指向非法位置，则打印“Wrong Position for Deletion”并返回ERROR。
+ * 
+ **/</span>
+
+<span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span>
+<span class="cp">#define ERROR NULL
+</span><span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElementType</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">LNode</span> <span class="o">*</span><span class="n">PtrToLNode</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">LNode</span> <span class="p">{</span>
+    <span class="n">ElementType</span> <span class="n">Data</span><span class="p">;</span>
+    <span class="n">PtrToLNode</span> <span class="n">Next</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="n">PtrToLNode</span> <span class="n">Position</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">PtrToLNode</span> <span class="n">List</span><span class="p">;</span>
+
+<span class="n">Position</span> <span class="n">Find</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElementType</span> <span class="n">X</span> <span class="p">);</span>
+<span class="n">List</span> <span class="n">Insert</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElementType</span> <span class="n">X</span><span class="p">,</span> <span class="n">Position</span> <span class="n">P</span> <span class="p">);</span>
+<span class="n">List</span> <span class="n">Delete</span><span class="p">(</span> <span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">Position</span> <span class="n">P</span> <span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">List</span> <span class="n">L</span><span class="p">;</span>
+    <span class="n">ElementType</span> <span class="n">X</span><span class="p">;</span>
+    <span class="n">Position</span> <span class="n">P</span><span class="p">,</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span> <span class="n">N</span><span class="o">--</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">X</span><span class="p">);</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">Insert</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">L</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">L</span><span class="o">==</span><span class="n">ERROR</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Answer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span> <span class="n">N</span><span class="o">--</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">X</span><span class="p">);</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">P</span> <span class="o">==</span> <span class="n">ERROR</span> <span class="p">)</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Finding Error: %d is not in.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">L</span> <span class="o">=</span> <span class="n">Delete</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">P</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%d is found and deleted.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">L</span><span class="o">==</span><span class="n">ERROR</span> <span class="p">)</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Answer or Empty List.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">Insert</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">L</span><span class="o">==</span><span class="n">ERROR</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Answer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d is inserted as the last element.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">Position</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">LNode</span><span class="p">));</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">Insert</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">tmp</span><span class="o">!=</span><span class="n">ERROR</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Answer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">Delete</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">P</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">tmp</span><span class="o">!=</span><span class="n">ERROR</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Answer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="n">P</span><span class="o">=</span><span class="n">L</span><span class="p">;</span> <span class="n">P</span><span class="p">;</span> <span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* 你的代码将被嵌在这里 */</span>
+<span class="n">Position</span> <span class="nf">Find</span><span class="p">(</span><span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElementType</span> <span class="n">X</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">L</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">==</span> <span class="n">X</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+		<span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">List</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElementType</span> <span class="n">X</span><span class="p">,</span> <span class="n">Position</span> <span class="n">P</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">P</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">Position</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">List</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">LNode</span><span class="p">));</span>
+		<span class="n">P</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+		<span class="n">P</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+		<span class="n">P</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="n">X</span><span class="p">;</span>
+		<span class="n">L</span> <span class="o">=</span> <span class="n">P</span><span class="p">;</span>
+		<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">P</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">L</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">PtrToLNode</span> <span class="n">q</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+			<span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+		<span class="n">Position</span> <span class="n">lastelem</span> <span class="o">=</span> <span class="p">(</span><span class="n">List</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">LNode</span><span class="p">));</span>
+		<span class="n">lastelem</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+		<span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">lastelem</span><span class="p">;</span>
+		<span class="n">lastelem</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="n">X</span><span class="p">;</span>
+		<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="n">Position</span> <span class="n">k</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">k</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">==</span> <span class="n">P</span><span class="p">)</span>
+				<span class="k">break</span><span class="p">;</span>
+			<span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">k</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">)</span>
+		<span class="p">{</span>
+		    <span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Position for Insertion</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		    <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">List</span> <span class="n">inelem</span> <span class="o">=</span> <span class="p">(</span><span class="n">List</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">LNode</span><span class="p">));</span>
+		<span class="n">inelem</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">P</span><span class="p">;</span>
+		<span class="n">k</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">inelem</span><span class="p">;</span>
+		<span class="n">inelem</span><span class="o">-&gt;</span><span class="n">Data</span> <span class="o">=</span> <span class="n">X</span><span class="p">;</span>
+		<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">List</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">List</span> <span class="n">L</span><span class="p">,</span> <span class="n">Position</span> <span class="n">P</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">P</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Position for Deletion</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">P</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+		<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">Position</span> <span class="n">q</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">q</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">==</span> <span class="n">P</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+			<span class="n">free</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+			<span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">Next</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"Wrong Position for Deletion</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</p>
+      	  </section>
+	  
+          
+      <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
+      <script src="/assets/js/iDisqus.min.js"></script>
+    <body>
+        <div id="comment"></div>
+        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+        <ul id="popular-posts"></ul>
+       <script>
+            var disq = new iDisqus('comment', {
+                forum: 'auroretech',
+                site: 'https://www.auroretech.com',
+                api: 'http://45.78.40.30',
+                mode: 3,
+                init: true,
+                timeout: 3000,
+                popular: document.getElementById('popular-posts'),
+                autoCreate: true,
+            });
+            disq.popular();
+            disq.count();
+        </script>
+
+
+	  
+
+					<!-- Footer -->
+						<footer>
+              <ul class="actions">
+                <li><a href="/computer-science/" class="button">Our Blog</a></li>
+              </ul>
+						</footer>
+					</div>
+
+				<!-- Footer -->
+        <footer id="footer">
+  <section>
+    <form method="POST" action="https://formspree.io/mrzhangx0504@outlook.com">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"></textarea>
+      </div>
+      <ul class="actions">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </section>
+  <section class="split contact">
+    <section class="alt">
+      <h3>Location</h3>
+      <p>China</p>
+    </section>
+    <section>
+      <h3>Phone</h3>
+      <p><a href="tel:012456789">012456789</a></p>
+    </section>
+    <section>
+      <h3>Email</h3>
+      <p><a href="mailto:mrzhangx0504@outlook.com">mrzhangx0504@outlook.com</a></p>
+    </section>
+    <section>
+      <h3>Social</h3>
+      <ul class="icons alt">
+        <li><a href="https://twitter.com/MeiertaylorMaze" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+        <!-- <li><a href="https://facebook.com/default" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>    -->
+        <li><a href="https://instagram.com/__sakura13" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
+        <li><a href="https://github.com/auroretech" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+      </ul>
+    </section>
+  </section>
+</footer>
+<!-- Copyright -->
+<div id="copyright">
+  <ul><li>&copy; Auroretech </li><li>Design by <a href="https://www.auroretech.com">Auroretech</a></li><!--<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li> --> </ul>
+</div>
+
+
+			</div>
+
+      <!-- Scripts -->
+  		<!-- DYN -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120895017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120895017-1');
+</script>
+
+
+	</body>
+</html>
