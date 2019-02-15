@@ -1,15 +1,17 @@
 ﻿{% if page.comments != false %}
       <link rel="stylesheet" href="/assets/css/iDisqus.min.css" />
       <script src="/assets/js/iDisqus.min.js"></script>
+      <script src="/assets/js/iDisqus.js"></script>
     <body>
         <div id="comment"></div>
-        <p>本页共有 <span data-disqus-url="/disqus-php-api.html"></span> 条评论</p>
+<!--         <p>本页共有 <span data-disqus-url="{{ post.url }}"></span> 条评论</p> -->
         <ul id="popular-posts"></ul>
        <script>
             var disq = new iDisqus('comment', {
                 forum: 'auroretech',
                 site: 'https://www.auroretech.com',
-                api: 'http://45.78.40.30',
+                api: 'http://104.224.140.214',
+//                 url: '{{ post.url }}'
                 mode: 3,
                 init: true,
                 timeout: 3000,

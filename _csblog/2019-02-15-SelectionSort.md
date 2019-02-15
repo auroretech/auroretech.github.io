@@ -10,7 +10,8 @@ comments: true
 ## **选择类排序算法原理**
 
 ## `"SelectionSort.h"`
-```c++
+
+```
 #pragma once
 
 #include <iostream>
@@ -86,9 +87,7 @@ int build_max_heap(std::vector<int> &);
 int max_heap_sort(std::vector<int> &);
 
 #endif // !HEAP_SORT
-
 ```
-
 
 ## `"SelectionSort.cpp"`
 
